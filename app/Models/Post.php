@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
-    public function profiles(){
+
+    use HasFactory;
+
+
+    public function posterProfile(){
         
-        return $this->belongsTo('App\Models\Profiles');
+        return $this->belongsTo('App\Models\Profiles','profiles_id');
     }
 
 
-    use HasFactory;
+
 }

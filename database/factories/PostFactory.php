@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Post;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
@@ -21,7 +22,18 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+
         return [
+            'message'=>$this->faker->unique()->safeEmail,
+            'profiles_id' => function(){
+                return factory(App\Profiles::class)->create()->id;
+            }
+
+
+
+
+
+
             //
         ];
     }
