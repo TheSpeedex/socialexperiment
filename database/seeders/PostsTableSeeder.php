@@ -28,9 +28,9 @@ class PostsTableSeeder extends Seeder
        $e->save();
         
 
-      // Post::factory()
-      // ->times(50)
-       // ->create();
+       Post::factory()
+        ->times(200)
+        ->create();
 
 
 

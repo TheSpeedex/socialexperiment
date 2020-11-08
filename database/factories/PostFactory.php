@@ -24,16 +24,8 @@ class PostFactory extends Factory
     {
 
         return [
-            'message'=>$this->faker->unique()->safeEmail,
-            'profiles_id' => function(){
-                return factory(App\Profiles::class)->create()->id;
-            }
-
-
-
-
-
-
+            'message'=>$this->faker->text($maxNbChars = 200),
+            'profiles_id' => \App\Models\Profiles::inRandomOrder() -> first()->id,
             //
         ];
     }
