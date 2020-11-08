@@ -18,5 +18,10 @@ class Post extends Model
     }
 
 
+    public function commentOnPost(){
+        return $this -> hasMany('App\Models\Comment');
+    }
+
+
 
 }
