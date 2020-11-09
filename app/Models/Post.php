@@ -17,9 +17,8 @@ class Post extends Model
         return $this->belongsTo('App\Models\Profiles','profiles_id');
     }
 
-
-    public function commentOnPost(){
-        return $this -> hasMany('App\Models\Comment');
+    public function postComments(){
+        return $this->hasMany('App\Models\Comment','posts_id');
     }
 
 

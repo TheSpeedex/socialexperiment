@@ -29,7 +29,7 @@ class PostsTableSeeder extends Seeder
         
 
        Post::factory()
-        ->times(200)
+        ->times(10)
         ->create();
 
 

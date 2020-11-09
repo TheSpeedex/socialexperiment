@@ -13,14 +13,14 @@ class Comment extends Model
 
 
     public function commentOnPost(){
-        return $return ->belongsTo('App\Models\Post','posts_id');
+        return $this ->belongsTo('App\Models\Post','posts_id');
     }
 
 
 
 
     public function commentProfile(){
-        return $return ->belongsTo('App\Models\Profiles','profiles_id');
+        return $this ->belongsTo('App\Models\Profiles','profiles_id');
     }
 
     

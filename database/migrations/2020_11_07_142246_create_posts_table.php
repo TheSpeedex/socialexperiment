@@ -16,14 +16,14 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('message');
-            $table->unsignedBigInteger('profiles_id');
+            $table->foreignID('profiles_id')->references('id')->
+                on('profiles')->onDelete('cascade')->
+                onUpdate('cascade');
             
             $table->timestamps();
 
 
-            $table->foreign('profiles_id')->references('id')->
-                on('profiles')->onDelete('cascade')->
-                onUpdate('cascade');
+;
 
         });
     }

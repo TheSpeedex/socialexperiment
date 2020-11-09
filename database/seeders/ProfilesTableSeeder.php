@@ -26,7 +26,7 @@ class ProfilesTableSeeder extends Seeder
 
 
         Profiles::factory()
-        ->times(50)
+        ->times(10)
         ->create();
 
         
