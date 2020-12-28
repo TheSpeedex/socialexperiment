@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('register');
 });
+
+
+Route::get('/home', function () {
+    Route ::view('home', 'home')->middleware('auth');
+    #dd(\Illuminate\Support\Facades\Auth::user());
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

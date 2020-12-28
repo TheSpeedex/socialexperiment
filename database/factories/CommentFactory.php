@@ -23,7 +23,7 @@ class CommentFactory extends Factory
     {
         return [
             'cmessage'=>$this->faker->text($maxNbChars = 200),
-            'profiles_id' => \App\Models\Profiles::inRandomOrder() -> first()->id,
+            'users_id' => \App\Models\User::inRandomOrder() -> first()->id,
             'posts_id' => \App\Models\Post::inRandomOrder() -> first()->id,
             //
         ];

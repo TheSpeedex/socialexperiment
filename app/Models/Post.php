@@ -14,7 +14,7 @@ class Post extends Model
 
     public function posterProfile(){
         
-        return $this->belongsTo('App\Models\Profiles','profiles_id');
+        return $this->belongsTo('App\Models\User','users_id');
     }
 
     public function postComments(){

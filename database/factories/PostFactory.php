@@ -25,7 +25,7 @@ class PostFactory extends Factory
 
         return [
             'message'=>$this->faker->text($maxNbChars = 200),
-            'profiles_id' => \App\Models\Profiles::inRandomOrder() -> first()->id,
+            'users_id' => \App\Models\User::inRandomOrder() -> first()->id,
             //
         ];
     }

@@ -20,7 +20,7 @@ class Comment extends Model
 
 
     public function commentProfile(){
-        return $this ->belongsTo('App\Models\Profiles','profiles_id');
+        return $this ->belongsTo('App\Models\User','users_id');
     }
 
     
