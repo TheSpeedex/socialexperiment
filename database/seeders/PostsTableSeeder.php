@@ -18,13 +18,13 @@ class PostsTableSeeder extends Seeder
 
        $e = new Post;
        $e->message = "This Message";
-       $e->profiles_id = 5;
+       $e->users_id = 5;
        $e->save();
 
        
        $e = new Post;
        $e->message = "Try again";
-       $e->profiles_id = 6;
+       $e->users_id = 6;
        $e->save();
         
 

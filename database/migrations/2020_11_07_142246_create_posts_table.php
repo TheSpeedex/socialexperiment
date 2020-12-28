@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('message');
             $table->foreignID('users_id')->references('id')->
-                on('user')->onDelete('cascade')->
+                on('users')->onDelete('cascade')->
                 onUpdate('cascade');
             
             $table->timestamps();
@@ -28,6 +28,9 @@ class CreatePostsTable extends Migration
         });
     }
 
+
+
+    
     /**
      * Reverse the migrations.
      *
