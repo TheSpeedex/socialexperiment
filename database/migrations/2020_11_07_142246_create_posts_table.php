@@ -22,13 +22,12 @@ class CreatePostsTable extends Migration
             
             $table->timestamps();
 
+            
 
 ;
 
         });
     }
-
-
 
     
     /**

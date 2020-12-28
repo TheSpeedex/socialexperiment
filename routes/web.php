@@ -30,3 +30,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('posts',[PostController::class, 'index']);
 
+Route::get('post-creator',[PostController::class,'naviToCreatePost']);
+Route::post('createPost',[PostController::class,'createPost'])->name('post-creator');

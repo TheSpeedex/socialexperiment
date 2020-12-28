@@ -9,17 +9,7 @@ class Profiles extends Model
 {
     use HasFactory;
 
-    public function posts(){
-        return $this->hasMany('App\Models\Post');
-
-
-    }
-
-    public function comments(){
-        return $this->hasMany('App\Models\Comment');
-    }
-
-
+    
 
 
 

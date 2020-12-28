@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <button type ="button" onclick = "location.href ='http://socialexperiment.test/posts'">To Posts</button>
                 </div>
             </div>
         </div>
