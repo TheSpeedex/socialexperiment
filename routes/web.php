@@ -32,3 +32,5 @@ Route::get('posts',[PostController::class, 'index']);
 
 Route::get('post-creator',[PostController::class,'naviToCreatePost']);
 Route::post('createPost',[PostController::class,'createPost'])->name('post-creator');
+
+Route::get('post/{id}',[PostController::class, 'show'])->name('postEnlarge');

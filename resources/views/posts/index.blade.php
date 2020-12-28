@@ -6,10 +6,8 @@
 
     <ul>
         @foreach ($posts as $post)
-            <li>Id: {{$post->id}}</li>
             <li>Name: {{$post->posterProfile->name}}</li>
-            <li>UserID: {{$post->users_id}}</li>
-            <li>Message: {{$post->message}}</li>
+            <li onclick = "location.href='{{route('postEnlarge',['id'=>$post->id])}}'">Message: {{$post->message}}</li>
         @endforeach
     </ul>
 
