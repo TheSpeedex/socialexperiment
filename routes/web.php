@@ -31,11 +31,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('posts',[PostController::class, 'index']);
 
 Route::get('post-creator',[PostController::class,'naviToCreatePost']);
-Route::post('createPost',[PostController::class,'createPost'])->name('post-creator');
+Route::post('createPost',[PostController::class,'createPost'])->name('post-creator')->middleware('auth');
 
 Route::get('post/{id}',[PostController::class, 'show'])->name('postEnlarge');
 Route::get('post/edit/{id}',[PostController::class, 'edit'])->name('edit');
 
-Route::post('post',[PostController::class, 'update'])->name('update');
+Route::post('post',[PostController::class, 'update'])->name('update')->middleware('auth');
 
 Route::post('save-comment',[PostController::class,'save_comment']);

@@ -10,7 +10,7 @@
     <div class="container mt-3">
         <p class="mb-2"><a href="{{ url('/posts') }}"><< Post List</a></p>
         <h3 class="mb-2 pb-1 border-bottom">{{$post->posterProfile->name}}</h3>
-        <p>{{$post->show}}</p>
+        <p>{{$post->message}}</p>
         <hr/>
         {{-- Post Comments --}}
         <div class="card mt-4">
@@ -30,11 +30,14 @@
                             <blockquote class="blockquote">
                               <small class="mb-0">{{ $comment->cmessage }}</small>
                             </blockquote>
+                            <small>-{{$comment->commentProfile->name}}</small>
                             <hr/>
+                            
                         @endforeach
                     @else
                     <p class="no-comments">No Comments Yet</p>
                     @endif
+                    
                 </div>
             </div>
         </div>
@@ -46,6 +49,7 @@
 $(".save-comment").on('click',function(){
     var _comment=$(".comment").val();
     var _post=$(this).data('post');
+    var _user = '<?php echo $user->name;?>';
     var vm=$(this);
     // Run Ajax
     $.ajax({
@@ -55,6 +59,7 @@ $(".save-comment").on('click',function(){
         data:{
             comment:_comment,
             post:_post,
+            user:_user;
             _token:"{{ csrf_token() }}"
         },
         beforeSend:function(){
@@ -67,6 +72,7 @@ $(".save-comment").on('click',function(){
             if(res.bool==true){
                 $(".comments").prepend(_html);
                 $(".comment").val('');
+                $(".user").val('');
                 $(".comment-count").text($('blockquote').length);
                 $(".no-comments").hide();
             }

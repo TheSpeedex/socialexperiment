@@ -45,7 +45,6 @@ class PostController extends Controller
     public function show($id){
         $post = Post::findOrFail($id);
         $user = User::where('id', '=', Auth::guard()->id())->first();
-
         return view('posts.postEnlarge',['post'=> $post,"user"=>$user]);
     }
 
