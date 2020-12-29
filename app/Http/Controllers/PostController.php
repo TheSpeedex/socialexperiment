@@ -29,11 +29,29 @@ class PostController extends Controller
         return redirect('posts');
     }
 
-    public function show($id){
-        $post = Post::findOrFail($id);
-        return view('posts.postEnlarge',['post'=> $post]);
+    public function postDelete(Request $request){
+
     }
 
+
+    public function update(Request $request){
+        $post =Post::find($request->id);
+        $post->message=$request->editContent;    
+        $post->save();
+        return redirect('posts');
+    }
+
+    public function show($id){
+        $post = Post::findOrFail($id);
+        $user = User::where('id', '=', Auth::guard()->id())->first();
+
+        return view('posts.postEnlarge',['post'=> $post,"user"=>$user]);
+    }
+
+    public function edit($id){
+        $post = Post::findOrFail($id);
+        return view('posts.edit',['post'=> $post]);
+    }
 
 
 }
