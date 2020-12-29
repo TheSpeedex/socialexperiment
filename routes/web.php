@@ -37,3 +37,5 @@ Route::get('post/{id}',[PostController::class, 'show'])->name('postEnlarge');
 Route::get('post/edit/{id}',[PostController::class, 'edit'])->name('edit');
 
 Route::post('post',[PostController::class, 'update'])->name('update');
+
+Route::post('save-comment',[PostController::class,'save_comment']);

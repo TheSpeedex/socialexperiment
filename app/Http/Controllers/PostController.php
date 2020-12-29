@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -53,5 +54,18 @@ class PostController extends Controller
         return view('posts.edit',['post'=> $post]);
     }
 
+ 
+
+// Save Comment
+function save_comment(Request $request){
+    $comment=new Comment;
+    $comment->users_id = Auth::guard()->id();
+    $comment->posts_id=$request->post;
+    $comment->cmessage=$request->comment;
+    $comment->save();
+    return response()->json([
+        'bool'=>true
+    ]);
+}
 
 }

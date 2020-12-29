@@ -9,22 +9,18 @@ class Comment extends Model
 {
     use HasFactory;
 
-
-
-
     public function commentOnPost(){
         return $this ->belongsTo('App\Models\Post','posts_id');
     }
-
-
-
 
     public function commentProfile(){
         return $this ->belongsTo('App\Models\User','users_id');
     }
 
-    
 
+    protected $fillable = [
+        'cmessage',
+    ];
 
 
 }
