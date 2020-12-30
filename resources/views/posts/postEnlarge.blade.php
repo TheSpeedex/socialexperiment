@@ -32,7 +32,6 @@
                             </blockquote>
                             <small>-{{$comment->commentProfile->name}}</small>
                             <hr/>
-                            
                         @endforeach
                     @else
                     <p class="no-comments">No Comments Yet</p>
@@ -59,7 +58,7 @@ $(".save-comment").on('click',function(){
         data:{
             comment:_comment,
             post:_post,
-            user:_user;
+            user:_user,
             _token:"{{ csrf_token() }}"
         },
         beforeSend:function(){
@@ -68,6 +67,7 @@ $(".save-comment").on('click',function(){
         success:function(res){
             var _html='<blockquote class="blockquote animate__animated animate__bounce">\
             <small class="mb-0">'+_comment+'</small>\
+            <small class="mb-0">'+_user+'</small>\
             </blockquote><hr/>';
             if(res.bool==true){
                 $(".comments").prepend(_html);
@@ -77,6 +77,7 @@ $(".save-comment").on('click',function(){
                 $(".no-comments").hide();
             }
             vm.text('Save').removeClass('disabled');
+            window.location = ('{{route('postEnlarge',['id'=>$post->id])}}')
         }   
     });
 });

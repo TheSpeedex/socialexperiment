@@ -26,16 +26,16 @@ Route::get('/home', function () {
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
-Route::get('posts',[PostController::class, 'index']);
+Route::get('posts',[PostController::class, 'index'])->middleware('auth');
 
-Route::get('post-creator',[PostController::class,'naviToCreatePost']);
+Route::get('post-creator',[PostController::class,'naviToCreatePost'])->middleware('auth');
 Route::post('createPost',[PostController::class,'createPost'])->name('post-creator')->middleware('auth');
 
-Route::get('post/{id}',[PostController::class, 'show'])->name('postEnlarge');
-Route::get('post/edit/{id}',[PostController::class, 'edit'])->name('edit');
+Route::get('post/{id}',[PostController::class, 'show'])->name('postEnlarge')->middleware('auth');
+Route::get('post/edit/{id}',[PostController::class, 'edit'])->name('edit')->middleware('auth');
 
 Route::post('post',[PostController::class, 'update'])->name('update')->middleware('auth');
 
-Route::post('save-comment',[PostController::class,'save_comment']);
+Route::post('save-comment',[PostController::class,'save_comment'])->middleware('auth');
