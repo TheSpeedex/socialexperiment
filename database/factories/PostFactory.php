@@ -25,8 +25,10 @@ class PostFactory extends Factory
 
         return [
             'message'=>$this->faker->text($maxNbChars = 200),
+            'imagePath'=>'blank.png',
             'users_id' => \App\Models\User::inRandomOrder() -> first()->id,
             //
         ];
     }
+
 }

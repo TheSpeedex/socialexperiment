@@ -30,12 +30,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('posts',[PostController::class, 'index'])->middleware('auth');
 
+Route::get('profile', function () {
+    return view('profile.profile');
+});
+
+
+
+
 Route::get('post-creator',[PostController::class,'naviToCreatePost'])->middleware('auth');
+
 Route::post('createPost',[PostController::class,'createPost'])->name('post-creator')->middleware('auth');
 
 Route::get('post/{id}',[PostController::class, 'show'])->name('postEnlarge')->middleware('auth');
-Route::get('post/edit/{id}',[PostController::class, 'edit'])->name('edit')->middleware('auth');
 
+Route::get('post/edit/{id}',[PostController::class, 'edit'])->name('edit')->middleware('auth');
 Route::post('post',[PostController::class, 'update'])->name('update')->middleware('auth');
 
+Route::post('edit-comment',[PostController::class,'edit_comment'])->middleware('auth');
 Route::post('save-comment',[PostController::class,'save_comment'])->middleware('auth');

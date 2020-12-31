@@ -8,6 +8,7 @@
         @foreach ($posts as $post)
             <li>Name: {{$post->posterProfile->name}}</li>
             <li onclick = "location.href='{{route('postEnlarge',['id'=>$post->id])}}'">Message: {{$post->message}}</li>
+            <img src = "{{asset('storage/images')}}/{{$post->upImage}}" alt = "image">
         @endforeach
     </ul>
 

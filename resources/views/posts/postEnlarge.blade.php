@@ -11,6 +11,9 @@
         <p class="mb-2"><a href="{{ url('/posts') }}"><< Post List</a></p>
         <h3 class="mb-2 pb-1 border-bottom">{{$post->posterProfile->name}}</h3>
         <p>{{$post->message}}</p>
+        @if($user -> id == $post->users_id)
+                <button type ="button" onclick = "location.href='{{route('edit',['id'=>$post->id])}}'">Edit Post</button>
+                @endif
         <hr/>
         {{-- Post Comments --}}
         <div class="card mt-4">
@@ -44,6 +47,11 @@
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
+
+
+
+
+
 // Save Comment
 $(".save-comment").on('click',function(){
     var _comment=$(".comment").val();

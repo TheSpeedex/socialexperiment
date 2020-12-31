@@ -19,10 +19,8 @@ class CreatePostsTable extends Migration
             $table->foreignID('users_id')->references('id')->
                 on('users')->onDelete('cascade')->
                 onUpdate('cascade');
-            
+            $table->string('imagePath');
             $table->timestamps();
-
-            
 
 ;
 
