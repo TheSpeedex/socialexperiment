@@ -22,9 +22,13 @@ class PostController extends Controller
     }
 
     public function createPost(Request $request){#any info sent is saved in request
+        $request->validate([
+            'content'=>'required',
+            'image' => 'mimes:jpeg,jpg,png|max:1024'
+        ]);
         if($request->image !=null){
             $image = $request->file('image');
-            $imageName =time().'.'.$image->extention();
+            $imageName =time().'.'.$image->extension();
             $image->move(public_path('storage/images'),$imageName);
         }else{
             $imageName ="blank.png";
@@ -33,7 +37,7 @@ class PostController extends Controller
         $post = new Post;
         $post->message=$request->content;
         $post->users_id=$user->id;     
-        $post->imagePath =$imageName;
+        $post->imagePath=$imageName;
         $post->save();
         return redirect('posts');
     }

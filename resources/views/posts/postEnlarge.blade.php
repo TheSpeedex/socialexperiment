@@ -10,6 +10,9 @@
     <div class="container mt-3">
         <p class="mb-2"><a href="{{ url('/posts') }}"><< Post List</a></p>
         <h3 class="mb-2 pb-1 border-bottom">{{$post->posterProfile->name}}</h3>
+        @if($post->imagePath != "blank.png")            
+                <img src = "{{asset('storage/images')}}/{{$post->imagePath}}" alt = "image" width:50% >
+                @endif
         <p>{{$post->message}}</p>
         @if($user -> id == $post->users_id)
                 <button type ="button" onclick = "location.href='{{route('edit',['id'=>$post->id])}}'">Edit Post</button>
