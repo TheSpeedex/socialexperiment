@@ -8,8 +8,8 @@
         @foreach ($posts as $post)
             <li>Name: {{$post->posterProfile->name}}</li>
             <li onclick = "location.href='{{route('postEnlarge',['id'=>$post->id])}}'">Message: {{$post->message}}</li>
-            @if($post->imagePath != "blank.png")            
-                <img src = "{{asset('storage/images')}}/{{$post->imagePath}}" alt = "image" width:50% >
+            @if($post->image->filename != "blank.png")            
+                <img src = "{{asset('storage/images')}}/{{$post->image->filename}}" alt = "image" width:50% >
                 @endif
             
         @endforeach

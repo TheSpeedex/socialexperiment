@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 
 use App\Models\User;
-
+use App\Models\Image;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -17,18 +17,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-        $a = new User;
-        $a-> name = "Liam";
-        $a-> email = "Liam@mail.com";
-        $a-> password = "password123";
-        $a->save();
- 
 
 
-        User::factory()
-        ->times(10)
-        ->create();
-
+      \App\Models\Post::factory(10)->has(Image::factory())->create();
         
       //  factory(App\Models\Profiles::class, 50)->create();
 

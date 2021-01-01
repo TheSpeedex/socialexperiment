@@ -16,7 +16,7 @@
 
                     {{ __('You are logged in!') }}
                     <button type ="button" onclick = "location.href ='http://socialexperiment.test/posts'">To Posts</button>
-                    <button type ="button" onclick = "location.href ='http://socialexperiment.test/profile'">Profile</button>
+                    <button type ="button" onclick = "location.href ='{{ url('profile') }}'">Profile</button>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,5 +21,11 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag');
+    }
+
+
+    public function image()
+    {
+        return $this->morphOne("App\Models\Image", 'imageable');
     }
 }

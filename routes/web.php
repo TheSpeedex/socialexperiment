@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 
 
 /*
@@ -30,11 +31,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('posts',[PostController::class, 'index'])->middleware('auth');
 
-Route::get('profile', function () {
-    return view('profile.profile');
-});
 
 
+Route::get('profile',[ProfileController::class,'profile'])->middleware('auth');
 
 
 Route::get('post-creator',[PostController::class,'naviToCreatePost'])->middleware('auth');

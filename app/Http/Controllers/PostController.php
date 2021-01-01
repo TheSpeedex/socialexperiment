@@ -41,9 +41,9 @@ class PostController extends Controller
         $post = new Post;
         $post->message=$request->content;
         $post->users_id=$user->id;     
-        $post->imagePath=$imageName;
         $post->save();
         $post->tags()->attach( $request->tags);
+        $post->image()->create(['filename'=>$imageName]);
         return redirect('posts');
     }
 
