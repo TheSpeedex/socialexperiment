@@ -51,7 +51,7 @@
         <p class="mb-2"><a href="{{ url('/posts') }}"><< Post List</a></p>
         <h3 class="mb-2 pb-1 border-bottom">{{$post->posterProfile->name}}</h3>
         @if($post->imagePath != "blank.png")            
-                <img src = "{{asset('storage/images')}}/{{$post->imagePath}}" alt = "image" width:50% >
+                <img src = "{{asset('storage/images')}}/{{$post->image->filename}}" alt = "image" width:50% >
                 @endif
         <p>{{$post->message}}</p>
         @if($user -> id == $post->users_id)
