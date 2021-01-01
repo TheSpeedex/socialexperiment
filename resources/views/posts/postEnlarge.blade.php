@@ -3,6 +3,46 @@
 @section('title','posts')
 
 @section('content')
+<head>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    .editPopup {
+      position: relative;
+      text-align: center;
+      width: 100%;
+    }
+    .formPopup {
+      display: none;
+      position: fixed;
+      left: 45%;
+      top: 5%;
+      transform: translate(-50%, 5%);
+      border: 3px solid #999999;
+      z-index: 9;
+    }
+    .formContainer {
+      max-width: 300px;
+      padding: 20px;
+      background-color: #fff;
+    }
+    .formContainer input[type=text]{
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 20px 0;
+      border: none;
+      background: #eee;
+    }
+    .formContainer input[type=text]:focus{
+      background-color: #ddd;
+      outline: none;
+    }
+    .formContainer .btn:hover,
+    .openButton:hover {
+      opacity: 1;
+    }
+  </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
 </head>
@@ -18,6 +58,9 @@
                 <button type ="button" onclick = "location.href='{{route('edit',['id'=>$post->id])}}'">Edit Post</button>
                 @endif
         <hr/>
+        @foreach ($post->tags as $tag)
+                     <a>#{{$tag->name}}</a>
+                        @endforeach
         {{-- Post Comments --}}
         <div class="card mt-4">
             <h5 class="card-header">Comments <span class="comment-count float-right badge badge-info">{{ count($post->postComments) }}</span></h5>
@@ -38,6 +81,23 @@
                             </blockquote>
                             <small>-{{$comment->commentProfile->name}}</small>
                             <hr/>
+                            
+                            @if($user -> id == $comment->users_id)
+                                <button type = "button" class = "openButton btn btn-primary float -right btn-sm" onclick="openForm({{$comment}})">Edit</button>
+                                @endif
+
+                                <div class="editPopup">
+                                        <div class ="formPopup" id ="popupForm">
+                                                <div class ="card">
+                                                        <h2>Edit Comment</h2><br>
+                                                        <textarea class ="form-control comment" id= "pre_edit_content" placeholder ="Enter Comment"></textarea><br>
+                                                        <input type= "hidden" id="comment_id" class="form-control comment_id">
+                                                        <button data-post="{{ $post->id }}" class="btn btn-success edit-comment">Submit</button><br>
+                                                        <button type="button" class = "btn cancel btn-danger" onclick = "closeForm()">Cancel</button>
+                                                        
+                                                </div>
+                                        </div>
+                                </div>
                         @endforeach
                     @else
                     <p class="no-comments">No Comments Yet</p>
@@ -52,7 +112,43 @@
 <script type="text/javascript">
 
 
-
+// Edit Comment
+$(".edit-comment").on('click',function(){
+    var _comment=$("#pre_edit_content").val();
+    var _comment_id=$(".comment_id").val();
+    var _user = '<?php echo $user->name;?>';
+    var vm=$(this);
+    // Run Ajax
+    $.ajax({
+        url:"{{ url('edit-comment') }}",
+        type:"post",
+        dataType:'json',
+        data:{
+            comment:_comment,
+            comment_id:_comment_id,
+            user:_user,
+            _token:"{{ csrf_token() }}"
+        },
+        beforeSend:function(){
+            vm.text('Saving...').addClass('disabled');
+        },
+        success:function(res){
+            var _html='<blockquote class="blockquote animate__animated animate__bounce">\
+            <small class="mb-0">'+_comment+'</small>\
+            <small class="mb-0">'+_user+'</small>\
+            </blockquote><hr/>';
+            if(res.bool==true){
+                $(".comments").prepend(_html);
+                $(".comment").val('');
+                $(".user").val('');
+                $(".comment-count").text($('blockquote').length);
+                $(".no-comments").hide();
+            }
+            vm.text('Save').removeClass('disabled');
+            window.location = ('{{route('postEnlarge',['id'=>$post->id])}}')
+        }   
+    });
+});
 
 
 // Save Comment
@@ -92,7 +188,21 @@ $(".save-comment").on('click',function(){
         }   
     });
 });
+
+
+function openForm(comment) {
+        $("#comment_id").val(comment.id);
+        $("#pre_edit_content").val(comment.cmessage);
+        document.getElementById("popupForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+    }
+
 </script>
+
+
 
 
 

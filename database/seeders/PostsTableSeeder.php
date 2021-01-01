@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use App\Models\Tag;
 
 use Illuminate\Database\Seeder;
 
@@ -15,11 +16,8 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-      
+        \App\Models\Post::factory(10)->has(Tag::factory()->count(rand(1,10)))->create();
 
-       Post::factory()
-        ->times(10)
-        ->create();
 
 
 

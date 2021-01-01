@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -18,8 +19,11 @@ class PostController extends Controller
     }
 
     public function naviToCreatePost(){
-        return view('posts.create-posts');
+        $tags = Tag::All();
+        return view('posts.create-posts',['tags' => $tags]);
     }
+
+
 
     public function createPost(Request $request){#any info sent is saved in request
         $request->validate([
@@ -39,13 +43,12 @@ class PostController extends Controller
         $post->users_id=$user->id;     
         $post->imagePath=$imageName;
         $post->save();
+        $post->tags()->attach( $request->tags);
         return redirect('posts');
     }
 
 
-    public function postDelete(Request $request){
 
-    }
 
     public function updateComment(Request $request){
         $post =Comment::find($request->id);
@@ -78,28 +81,6 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         return view('posts.edit',['post'=> $post]);
     }
-
-    public function imageUpload(){
-        return view('imageUpload');
-    }
-
-    public function imageUploadPost(Request $request)
-    {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-    
-        $imageName = time().'.'.$request->image->extension();  
-     
-        $request->image->move(public_path('images'), $imageName);
-  
-        /* Store $imageName name in DATABASE from HERE */
-    
-        return back()
-            ->with('success','You have successfully upload image.')
-            ->with('image',$imageName); 
-    }
-
  
 
 // Save Comment
@@ -107,6 +88,15 @@ function save_comment(Request $request){
     $comment=new Comment;
     $comment->users_id = Auth::guard()->id();
     $comment->posts_id=$request->post;
+    $comment->cmessage=$request->comment;
+    $comment->save();
+    return response()->json([
+        'bool'=>true
+    ]);
+}
+// edit Comment
+function edit_comment(Request $request){
+    $comment =Comment::where('id', $request->comment_id)->first();
     $comment->cmessage=$request->comment;
     $comment->save();
     return response()->json([

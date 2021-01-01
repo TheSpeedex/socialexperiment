@@ -15,4 +15,10 @@ class Post extends Model
     public function postComments(){
         return $this->hasMany('App\Models\Comment','posts_id');
     }
+
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag');
+    }
 }
