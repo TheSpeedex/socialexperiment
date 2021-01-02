@@ -54,7 +54,7 @@
                 <img src = "{{asset('storage/images')}}/{{$post->image->filename}}" alt = "image" width:50% >
                 @endif
         <p>{{$post->message}}</p>
-        @if($user -> id == $post->users_id)
+        @if($user -> id == $post->users_id || $user -> role == "admin")
                 <button type ="button" onclick = "location.href='{{route('edit',['id'=>$post->id])}}'">Edit Post</button>
                 @endif
         <hr/>
