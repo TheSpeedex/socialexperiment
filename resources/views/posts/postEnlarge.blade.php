@@ -120,7 +120,7 @@ $(".edit-comment").on('click',function(){
     var vm=$(this);
     // Run Ajax
     $.ajax({
-        url:"{{ url('edit-comment') }}",
+        url:"{{ url('edit-comment') }}",//route
         type:"post",
         dataType:'json',
         data:{
@@ -132,18 +132,7 @@ $(".edit-comment").on('click',function(){
         beforeSend:function(){
             vm.text('Saving...').addClass('disabled');
         },
-        success:function(res){
-            var _html='<blockquote class="blockquote animate__animated animate__bounce">\
-            <small class="mb-0">'+_comment+'</small>\
-            <small class="mb-0">'+_user+'</small>\
-            </blockquote><hr/>';
-            if(res.bool==true){
-                $(".comments").prepend(_html);
-                $(".comment").val('');
-                $(".user").val('');
-                $(".comment-count").text($('blockquote').length);
-                $(".no-comments").hide();
-            }
+        success:function(res){            
             vm.text('Save').removeClass('disabled');
             window.location = ('{{route('postEnlarge',['id'=>$post->id])}}')
         }   

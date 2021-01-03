@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+use App\Norris;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        app()->singleton('Norris',function ($app){
+            return new Norris();# Creates an instant of Norris Homestead runs
+        });
         //
     }
 
@@ -23,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Paginator::useBootstrap();
+        
+
+
+
     }
 }

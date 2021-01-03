@@ -4,6 +4,7 @@
 
 <form action ="{{route('post-creator')}}" method = "POST" enctype ="multipart/form-data">
      @csrf
+        <div class = "card">
         <p> Create Post </p>
         <textarea id="content" name="content" rows="13" class="form-control @error('content') is-invalid @enderror" placeholder="Add Post Content!" value="{{ old('content') }}" required></textarea>
         <select name="tags[]" id="tag" multiple>
@@ -13,6 +14,6 @@
             </select>
         <button type ="submit">Post The Post!</button>
         <input type="file" id="real-file" name="image" accept="image/*">
-        
+    </div>
 </form>
 @endsection

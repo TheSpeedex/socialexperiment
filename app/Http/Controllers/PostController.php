@@ -14,7 +14,7 @@ use App\Models\Tag;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::All();
+        $posts = Post::paginate(10);
         return view('posts.index',['posts' => $posts]);
     }
 
@@ -28,7 +28,7 @@ class PostController extends Controller
     public function createPost(Request $request){#any info sent is saved in request
         $request->validate([
             'content'=>'required',
-            'image' => 'mimes:jpeg,jpg,png|max:1024'
+            'image' => 'mimes:jpeg,jpg,png|max:2048'
         ]);
         if($request->image !=null){
             $image = $request->file('image');

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ApiController;
 
 
 /*
@@ -47,3 +48,5 @@ Route::post('post',[PostController::class, 'update'])->name('update')->middlewar
 
 Route::post('edit-comment',[PostController::class,'edit_comment'])->middleware('auth');
 Route::post('save-comment',[PostController::class,'save_comment'])->middleware('auth');
+
+Route::get('Norris',[ApiController::class,'Norris'])->middleware('auth');

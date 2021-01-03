@@ -16,7 +16,7 @@
       <img class = "avatar" src = "{{asset('storage/images')}}/{{$user->image->filename}}" alt = "avatar"  >
       <h1>{{$user->name}}</h1>
       <p class="title">CEO & Founder, Example</p>
-      <p>"{{$user->role}}"</p>
+      <p>Rank Of Profile: "{{$user->role}}"</p>
       <p><button>Edit</button></p>
 </div>
 </body>
