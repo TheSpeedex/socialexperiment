@@ -22,6 +22,7 @@
 
     <!-- Styles -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Styles <link href="https://bootswatch.com/3/journal/bootstrap.min.css" rel="stylesheet">-->
 </head>
 <body>
     <div id="app">

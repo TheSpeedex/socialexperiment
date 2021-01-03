@@ -17,7 +17,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Post::factory(10)->has(Tag::factory()->count(rand(1,10)))->has(Image::factory())->create();
+        \App\Models\Post::factory(60)->has(Tag::factory()->count(rand(1,10)))->has(Image::factory())->create();
 
 
 

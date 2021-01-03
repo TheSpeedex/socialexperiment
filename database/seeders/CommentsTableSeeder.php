@@ -24,7 +24,7 @@ class CommentsTableSeeder extends Seeder
      //   $i ->save();
 
         Comment::factory()
-        ->times(10)
+        ->times(120)
         ->create();
 
 

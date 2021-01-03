@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
 
 
 
-      \App\Models\User::factory(10)->has(Image::factory())->create();
+      \App\Models\User::factory(30)->has(Image::factory())->create();
         
       //  factory(App\Models\Profiles::class, 50)->create();
 
