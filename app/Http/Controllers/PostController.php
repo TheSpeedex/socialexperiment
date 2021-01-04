@@ -13,9 +13,9 @@ use App\Models\Tag;
 
 class PostController extends Controller
 {
-    public function index(){
+    public function catalogue(){
         $posts = Post::paginate(10);
-        return view('posts.index',['posts' => $posts]);
+        return view('posts.catalogue',['posts' => $posts]);
     }
 
     public function naviToCreatePost(){

@@ -80,12 +80,10 @@
                               <small class="mb-0">{{ $comment->cmessage }}</small>
                             </blockquote>
                             <small>-{{$comment->commentProfile->name}}</small>
-                            <hr/>
-                            
-                            @if($user -> id == $comment->users_id)
+                            @if($user -> id == $comment->users_id || $user->role ="admin")
                                 <button type = "button" class = "openButton btn btn-primary float -right btn-sm" onclick="openForm({{$comment}})">Edit</button>
                                 @endif
-
+                            <hr/>
                                 <div class="editPopup">
                                         <div class ="formPopup" id ="popupForm">
                                                 <div class ="card">

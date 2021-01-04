@@ -2,9 +2,6 @@
 
 
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="/css/profile1.css" rel="stylesheet">
@@ -20,6 +17,6 @@
       <p><button>Edit</button></p>
 </div>
 </body>
-</html>
+
 
 @endsection

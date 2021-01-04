@@ -31,6 +31,7 @@
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('Social Experiment', 'Home') }}
                 </a>
+                <center><img class = "centerImage" src = "{{ asset('storage/images/socialLogo.jpg') }}" alt = "socialLogo" height =5% width = 5% ></center>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

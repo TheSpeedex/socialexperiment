@@ -25,7 +25,7 @@
                 <img src = "{{asset('storage/images')}}/{{$post->image->filename}}" alt = "image" style ="height:200px;"  >
             @endif
             </div>
-      <p onclick = "location.href='{{route('postEnlarge',['id'=>$post->id])}}'">Message: {{$post->message}}</p>
+      <h4 class = "p1" onclick = "location.href='{{route('postEnlarge',['id'=>$post->id])}}'">Message: {{$post->message}}</h4>
     </div>
     @endforeach
   </div>
