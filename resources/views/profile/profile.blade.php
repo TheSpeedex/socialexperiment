@@ -10,11 +10,9 @@
 <!-- Add icon library -->
 
       <div class="card">
-      <img class = "avatar" src = "{{asset('storage/images')}}/{{$user->image->filename}}" alt = "avatar"  >
+      <center><img class = "avatar" src = "{{asset('storage/images')}}/{{$user->image->filename}}" alt = "avatar" left:50% ></center>
       <h1>{{$user->name}}</h1>
-      <p class="title">CEO & Founder, Example</p>
-      <p>Rank Of Profile: "{{$user->role}}"</p>
-      <p><button>Edit</button></p>
+      <p class="title">Rank Of Profile: "{{$user->role}}"</p>
 </div>
 </body>
 

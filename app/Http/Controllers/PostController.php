@@ -14,6 +14,7 @@ use App\Models\Tag;
 class PostController extends Controller
 {
     public function catalogue(){
+        
         $posts = Post::paginate(10);
         return view('posts.catalogue',['posts' => $posts]);
     }

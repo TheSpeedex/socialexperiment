@@ -16,21 +16,21 @@
     .formPopup {
       display: none;
       position: fixed;
-      left: 45%;
+      left: 50%;
       top: 5%;
-      transform: translate(-50%, 5%);
-      border: 3px solid #999999;
+      transform: translate(-40%, 5%);
       z-index: 9;
     }
     .formContainer {
-      max-width: 300px;
-      padding: 20px;
+      max-width: 700px;
+      height: 100%;
+      padding: 300px;
       background-color: #fff;
     }
     .formContainer input[type=text]{
       width: 100%;
-      padding: 15px;
-      margin: 5px 0 20px 0;
+      padding: 0px;
+      margin: 5px 0 5px 0;
       border: none;
       background: #eee;
     }
@@ -45,12 +45,14 @@
   </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/css/posts.css" rel="stylesheet">
 </head>
 
-    <div class="container mt-3">
+    <div class="card">
         <p class="mb-2"><a href="{{ url('/posts') }}"><< Post List</a></p>
         <h3 class="mb-2 pb-1 border-bottom">{{$post->posterProfile->name}}</h3>
-        @if($post->imagePath != "blank.png")            
+        @if($post->image->filename != "blank.png")          
                 <img src = "{{asset('storage/images')}}/{{$post->image->filename}}" alt = "image" width:50% >
                 @endif
         <p>{{$post->message}}</p>

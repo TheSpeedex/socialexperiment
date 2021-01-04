@@ -54,6 +54,57 @@ body {
   background: #ddd;
   margin-top: 20px;
 }
+#pButton {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+#hButton {
+  border: none;
+  outline: 10;
+  display: inline-block;
+  padding: 4px;
+  color: white;
+  background-color: darkgreen;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+#submit {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+#hButton:hover, a:hover {
+  opacity: 0.7;
+}
+
+#pButton:hover, a:hover {
+  opacity: 0.7;
+}
+
+
+#submit:hover, a:hover {
+  opacity: 0.7;
+}
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
